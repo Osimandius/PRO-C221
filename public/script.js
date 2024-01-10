@@ -106,6 +106,22 @@ $(function () {
             $("#stop_video").html(html)
         }
     })
+    $("#invite_button").click(function(){
+        var inviit=prompt("ENTER THE CHOSEN ELECTRONIC MAIL ADDRESS")
+        var data={
+            url:window.location.href,
+            to:inviit
+        }
+        $.ajax({
+            url:"/send-mail",
+            type:"post",
+            data:JSON.stringify(data),
+            dataType:"json",
+            contentType:"application/json",
+            success:function(result){alert("Invite has bean sent")},
+            error:function(result){console.log(result.responseJSON)}
+        })
+    })
 
 })
 
